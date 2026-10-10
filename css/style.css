@@ -75,10 +75,11 @@ html, body {
 button { font-family: inherit; }
 
 /* ---------- Viewport & stage ---------- */
-#viewport { position: fixed; inset: 0; display: grid; place-items: center; overflow: hidden; }
+#viewport { position: fixed; inset: 0; overflow: hidden; }
+/* Fixed 1920×1080 stage, centred in the window and scaled to fit (see fit() in main.js) */
 #stage {
-  width: 1920px; height: 1080px; position: relative; flex: none;
-  transform-origin: center center;
+  width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%); transform-origin: center center;
 }
 #bgglow {
   position: fixed; inset: -20%; pointer-events: none; z-index: 0;

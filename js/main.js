@@ -36,11 +36,13 @@ const mounting = new Map();
 function fit() {
   const s = Math.min(innerWidth / 1920, innerHeight / 1080);
   window.__stageScale = s;
-  stage.style.transform = `scale(${s})`;
+  stage.style.transform = `translate(-50%, -50%) scale(${s})`;
   resizeCurrent();
   const cur = slides[state.i]; if (cur) (insts.get(cur) || []).forEach(x => x.resize && x.resize());
 }
 addEventListener('resize', fit);
+addEventListener('fullscreenchange', () => requestAnimationFrame(fit));
+addEventListener('webkitfullscreenchange', () => requestAnimationFrame(fit));
 
 // ---------------- slide setup ----------------
 slides.forEach((sl, idx) => {
@@ -233,7 +235,11 @@ Hover any <b>⊕</b> item or label for details · drag 3D models to rotate` });
 document.body.append(help);
 const blackout = h('div', { id: 'blackout' }); document.body.append(blackout);
 
-function toggleFs() { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); }
+function toggleFs() {
+  const d = document, el = d.documentElement;
+  if (!(d.fullscreenElement || d.webkitFullscreenElement)) (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
+  else (d.exitFullscreen || d.webkitExitFullscreen)?.call(d);
+}
 
 // ---------------- hover detail card ----------------
 const card = h('div', { id: 'tipcard' });
