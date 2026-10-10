@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human Embryology — Interactive Revision</title>
+<meta name="description" content="Interactive General Embryology revision: fertilization to birth, placenta, twinning and birth defects — 3D models, live diagrams and an MCQ bank.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='35%25'%3E%3Cstop offset='0' stop-color='%23ffd1e3'/%3E%3Cstop offset='1' stop-color='%23ff4f8b'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='26' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+<div id="loader"><div class="ring"></div></div>
+<div id="bgglow"></div>
+<div id="viewport"><div id="stage">
+
+<!-- ===================================================== 0 · INTRO ===================================================== -->
+<section class="slide full" data-ch="0" data-title="Human Embryology">
+  <div class="visual" data-viz="cover"></div>
+  <div class="copy" style="top:auto; bottom:150px; max-width:1100px">
+    <div class="eyebrow" style="--accent-ch:#ff8fbd">General Embryology · Revision</div>
+    <h1>Human<br><span class="grad">Embryology</span></h1>
+    <p class="lede" style="max-width:900px">From a single cell to birth — in eight chapters.</p>
+  </div>
+  <footer class="cite">Based on the COMHS · NUST Oman lectures and Langman’s Medical Embryology, 15th ed. (T. W. Sadler, 2024) · drag to rotate</footer>
+</section>
+
+<section class="slide stack" data-ch="0" data-title="The journey">
+  <div class="copy">
+    <div class="eyebrow">Roadmap</div>
+    <h2>Thirty-eight weeks</h2>
+    <p class="lede">Click any stage to jump there.</p>
+  </div>
+  <div class="visual" data-viz="timeline"></div>
+  <footer class="cite">Langman’s Medical Embryology 15e, Ch. 3–9 · timings as taught in the COMHS lectures</footer>
+</section>
+
+<!-- ===================================================== 1 · WEEK 1 ===================================================== -->
+<section class="slide split" data-ch="1" data-title="Fertilization" data-src="w1:3-6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Week 1</div>
+    <h2>Fertilization</h2>
+    <p class="lede"><b>Sperm + oocyte → zygote</b></p>
+    <ul class="points">
+      <li class="hot">≈ Day 14 · mid-cycle<div class="tip" data-t="Time">Around mid-cycle (<b>day 14</b>) — the time of ovulation.</div></li>
+      <li class="hot">Ampulla of uterine tube<div class="tip" data-t="Site">Usually the <b>ampulla</b> — the widest part of the uterine tube.</div></li>
+      <li class="hot">Three prerequisites<div class="tip" data-t="Before fertilization can happen"><ul><li>Sperm &amp; oocyte transport</li><li>Capacitation</li><li>Acrosome reaction</li></ul></div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="tract" data-opts='{"mode":"fert"}'></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week (Dr. K. H. Afroze) · Langman 15e, Ch. 3</footer>
+</section>
+
+<section class="slide split" data-ch="1" data-title="Sperm & oocyte transport" data-src="w1:4-6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Prerequisite 1 · Transport</div>
+    <h2>The race</h2>
+    <ul class="points">
+      <li class="hot">Oocyte swept to ampulla<div class="tip" data-t="Oocyte transport">At ovulation the <b>secondary oocyte</b> is expelled into the uterine tube. Fluid currents from <b>cilia</b> and tubal <b>peristalsis</b> sweep it to the ampulla.</div></li>
+      <li class="hot">Hundreds of millions in<div class="tip" data-t="Deposited">Lecture: <b>200–600 million</b> sperm deposited in the posterior fornix of the vagina (Langman 15e: 200–300 million).<br>Many die in the <b>acidic vagina</b>; <b>cervical mucus</b> slows the rest; uterine &amp; tubal <b>muscular contractions</b> carry them up.</div></li>
+      <li class="hot">Only a few hundred arrive<div class="tip" data-t="Fate">Lecture: <b>≈200</b> reach the ampulla. Langman 15e: <b>300–500</b> reach the site of fertilization.</div></li>
+      <li class="hot">Fertile for 2–5 days<div class="tip" data-t="Sperm in the male">Stored mainly in the <b>tail of the epididymis</b> → peristalsis of the <b>vas deferens</b> → urethra.<br>Fertilizing power lasts <b>2–5 days</b> (lecture).</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="funnel"></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 4–6 · Langman 15e, Ch. 3</footer>
+</section>
+
+<section class="slide split" data-ch="1" data-title="Capacitation & acrosome reaction" data-src="w1:7-8">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Prerequisites 2 &amp; 3</div>
+    <h2>Getting ready</h2>
+    <div class="cards" style="margin-top:40px">
+      <div class="card hot" style="--cc:var(--amnion)" data-step="0">
+        <h3>Capacitation</h3><p>Proteins stripped off the sperm head · <b style="color:var(--fg)">5–7 h</b></p>
+        <div class="tip" data-t="Capacitation" data-c="#64d2ff">Removal of proteins from the plasma membrane over the sperm head → sperm becomes <b>more active</b> and able to fertilize.<br>Occurs in the female genital tract (lecture: starts at the cervix; Langman: mainly in the uterine tube, ≈7 h).<br><b>Only capacitated sperm can fertilize.</b></div>
+      </div>
+      <div class="card hot" style="--cc:var(--crest)" data-step="1">
+        <h3>Acrosome reaction</h3><p>Acrosome releases enzymes at the egg coats</p>
+        <div class="tip" data-t="Acrosome reaction" data-c="#34d399"><b>Hyaluronidase</b> → corona radiata<br><b>Trypsin-like enzymes</b> → digest zona pellucida<br><b>Acrosin (zona lysin)</b> → softens zona pellucida<br>Only <b>capacitated</b> sperm undergo it (Langman: triggered by zona proteins).</div>
+      </div>
+    </div>
+  </div>
+  <div class="visual" data-viz="acrosome"></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 7–8 · Langman 15e, Ch. 3</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="1" data-title="Six phases of fertilization" data-src="w1:9-13">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Phases of fertilization</div>
+    <h2>Six phases</h2>
+    <ol class="steps">
+      <li>Corona radiata<span class="sub">Hyaluronidase · tubal enzymes · tail beats</span></li>
+      <li>Zona pellucida<span class="sub">Zona reaction blocks other sperm</span></li>
+      <li>Membranes fuse<span class="sub">Head &amp; tail enter; sperm membrane left behind</span></li>
+      <li>Meiosis II completes<span class="sub">Female pronucleus (22,X) + 2nd polar body</span></li>
+      <li>Male pronucleus<span class="sub">22,X or 22,Y · tail degenerates</span></li>
+      <li>Pronuclei unite<span class="sub">DNA replicated → zygote, 46 chromosomes</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="fert3d" data-opts='{"mode":"phases"}'></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 9–13 · Langman 15e, Ch. 3 · “22,X” = 22 autosomes + X (23 chromosomes)</footer>
+</section>
+
+<section class="slide split wide-copy" data-ch="1" data-title="Results of fertilization" data-src="w1:14">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Consequences</div>
+    <h2>What fertilization does</h2>
+    <ul class="points compact">
+      <li class="hot">Completes meiosis II<div class="tip">The secondary oocyte is stimulated to finish its <b>2nd meiotic division</b>.</div></li>
+      <li class="hot">Blocks polyspermy<div class="tip" data-t="Cortical &amp; zona reaction">Sperm–oocyte fusion → Ca²⁺ rise → <b>cortical granules</b> release enzymes → zona glycoproteins &amp; sperm receptors modified → zona hardens → <b>other sperm can’t enter</b>.</div></li>
+      <li class="hot">Restores 46 chromosomes<div class="tip">Two haploid pronuclei → <b>diploid</b> zygote (46).</div></li>
+      <li class="hot">Determines sex<div class="tip">X-bearing sperm → <b>female (46,XX)</b><br>Y-bearing sperm → <b>male (46,XY)</b></div></li>
+      <li class="hot">Creates variation<div class="tip">Thorough shuffling of maternal &amp; paternal chromosomes.</div></li>
+      <li class="hot">Starts cleavage<div class="tip">Initiates mitotic division of the zygote.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="sexdet"></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 10 &amp; 14 · Langman 15e, Ch. 3</footer>
+</section>
+
+<section class="slide stack" data-ch="1" data-title="Abnormal fertilization" data-src="w1:15">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Abnormal fertilization</div>
+    <h2>When it goes wrong</h2>
+  </div>
+  <div class="visual" data-viz="abnfert"></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slide 15</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="1" data-title="Cleavage → morula" data-src="w1:16-17">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Days 1–3</div>
+    <h2>Cleavage</h2>
+    <ul class="points">
+      <li class="hot">Starts within 30 h<div class="tip">Cleavage = the onset of <b>mitosis</b> in the zygote, beginning within ~30 hours of fertilization.</div></li>
+      <li class="hot">In the uterine tube<div class="tip">Occurs as the zygote moves along the tube during the first ~3 days.</div></li>
+      <li class="hot">Smaller blastomeres<div class="tip">2 → 4 → 8 → 16 cells; each division halves the cytoplasm — the embryo does not grow.</div></li>
+      <li class="hot">Morula enters uterus<div class="tip" data-t="Morula">16-cell stage reaches the uterine cavity ≈ <b>day 3–4</b> (lecture: day 3; Langman: ~day 4).<br><b>Zona pellucida</b> still surrounds it.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="cleave3d" data-opts='{"mode":"cleavage"}'></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 16–17 · Langman 15e, Ch. 3</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="1" data-title="Blastocyst" data-src="w1:18-19">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">1</span>Days 4–6</div>
+    <h2>Blastocyst</h2>
+    <ol class="steps">
+      <li>Fluid enters the morula<span class="sub">Through the zona pellucida</span></li>
+      <li>Blastocoel forms<span class="sub">Spaces coalesce into one cavity</span></li>
+      <li>Inner cell mass<span class="sub">Embryoblast → the embryo</span></li>
+      <li>Trophoblast<span class="sub">Outer cells → fetal part of placenta</span></li>
+      <li>Ready to implant<span class="sub">Zona pellucida degenerates</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="cleave3d" data-opts='{"mode":"blastocyst"}'></div>
+  <footer class="cite">Lecture: Fertilization &amp; First Week, slides 18–19 · Langman 15e, Ch. 3</footer>
+</section>
+
+<!-- ===================================================== 2 · WEEK 2 ===================================================== -->
+<section class="slide split" data-ch="2" data-title="Implantation" data-src="w2:10-11">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">2</span>Week 2</div>
+    <h2>Implantation</h2>
+    <p class="lede">Blastocyst embeds in the <b>functional endometrium</b></p>
+    <ul class="points">
+      <li class="hot">Begins day 5–6<div class="tip">Starts at the end of week 1 once the <b>zona pellucida degenerates</b> and the trophoblast is exposed.</div></li>
+      <li class="hot">Complete by day 11–12<div class="tip">Finger-like processes of <b>syncytiotrophoblast</b> at the embryonic pole invade and burrow into the endometrium.</div></li>
+      <li class="hot">Upper body of uterus<div class="tip" data-t="Normal site">Lecture: <b>upper posterior wall</b> of the body, near the fundus, near the midline.<br>Langman 15e: anterior or posterior wall of the body.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="implant"></div>
+  <footer class="cite">Lecture: Implantation &amp; Second Week (Dr. K. H. Afroze), slides 10–11 · Langman 15e, Ch. 3–4</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="2" data-title="The week of twos" data-src="w2:6-9,16-17">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">2</span>Days 8–13</div>
+    <h2>The week of twos</h2>
+    <ol class="steps">
+      <li>Day 8 · Bilaminar disc<span class="sub">Epiblast (columnar) + hypoblast (cuboidal)</span></li>
+      <li>Day 9 · Primary yolk sac<span class="sub">Heuser’s membrane · lacunae in syncytium</span></li>
+      <li>Day 11–12 · Extraembryonic mesoderm<span class="sub">Uteroplacental circulation begins</span></li>
+      <li>Day 13 · Chorionic cavity<span class="sub">Secondary yolk sac · connecting stalk</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="concept3d"></div>
+  <footer class="cite">Lecture: Implantation &amp; Second Week, slides 6–9, 16–18 · Langman 15e, Ch. 4 (“the week of twos”)</footer>
+</section>
+
+<section class="slide split" data-ch="2" data-title="Chorion & amnion" data-src="w2:16-18">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">2</span>Extraembryonic mesoderm</div>
+    <h2>Chorion &amp; amnion</h2>
+    <ul class="points">
+      <li style="--dot:var(--tropho)">Chorion = trophoblast + somatic layer</li>
+      <li style="--dot:var(--amnion)">Amnion = amnioblasts + somatic layer</li>
+      <li style="--dot:var(--yolk)">Yolk sac ← splanchnic layer</li>
+      <li style="--dot:var(--orange)" class="hot">Connecting stalk → cord<div class="tip" data-t="Connecting stalk">Somatic &amp; splanchnic extraembryonic mesoderm stay connected at the caudal end of the embryo by the <b>connecting stalk</b> — the future <b>umbilical cord</b>.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="layers"></div>
+  <footer class="cite">Lecture: Implantation &amp; Second Week, slides 16–18 · Langman 15e, Ch. 4 · hover the layers</footer>
+</section>
+
+<section class="slide split" data-ch="2" data-title="Decidua" data-src="w2:12-13">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">2</span>Endometrium of pregnancy</div>
+    <h2>Decidua</h2>
+    <p class="lede">Secretory endometrium, maintained by <b>progesterone</b></p>
+    <ul class="points" data-step="0">
+      <li style="--dot:#ff5a6e" class="hot">Basalis<div class="tip">Between the conceptus and the <b>myometrium</b>.</div></li>
+      <li style="--dot:#ff9f0a" class="hot">Capsularis<div class="tip">Covers the conceptus (faces the uterine cavity).</div></li>
+      <li style="--dot:#c084fc" class="hot">Parietalis<div class="tip">Lines the rest of the uterine cavity.</div></li>
+    </ul>
+    <p class="lede" data-step="1" style="font-size:34px">Basalis → <b>maternal placenta</b><br>Capsularis + parietalis → <b>fuse, then degenerate</b></p>
+  </div>
+  <div class="visual" data-viz="decidua"></div>
+  <footer class="cite">Lecture: Implantation &amp; Second Week, slides 12–13 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide stack" data-ch="2" data-title="Abnormal implantation" data-src="w2:14-15|pla:25-26">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">2</span>Abnormal implantation</div>
+    <h2>Wrong place</h2>
+  </div>
+  <div class="visual" data-viz="abimplant"></div>
+  <footer class="cite">Lecture: Implantation &amp; Second Week, slides 14–15 (ectopic-site figure) · Placenta lecture, slides 25–26</footer>
+</section>
+
+<!-- ===================================================== 3 · WEEK 3 ===================================================== -->
+<section class="slide split narrow-copy" data-ch="3" data-title="Gastrulation" data-src="w3:6-12">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Week 3</div>
+    <h2>Gastrulation</h2>
+    <ol class="steps">
+      <li>Prechordal plate<span class="sub">Day 14 · marks the future head end</span></li>
+      <li>Primitive streak<span class="sub">Node · pit · groove — sets the body axes</span></li>
+      <li>Endoderm<span class="sub">Epiblast cells invaginate, replace hypoblast</span></li>
+      <li>Mesoderm<span class="sub">Spreads between epiblast and endoderm</span></li>
+      <li>Ectoderm<span class="sub">All 3 layers come from the epiblast</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="gastrula3d"></div>
+  <footer class="cite">Lecture: Third Week of Development (Dr. K. H. Afroze), slides 6–12 · Langman 15e, Ch. 5</footer>
+</section>
+
+<section class="slide split" data-ch="3" data-title="Membranes & cardiogenic area" data-src="w3:10-11">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Trilaminar disc</div>
+    <h2>Where mesoderm can’t go</h2>
+    <ul class="points">
+      <li class="hot" style="--dot:var(--ecto)">Oropharyngeal membrane<div class="tip" data-t="Buccopharyngeal (oropharyngeal) membrane">At the <b>prechordal plate</b> ectoderm and endoderm stay in contact. It later breaks down → <b>opening of the mouth</b>.</div></li>
+      <li class="hot" style="--dot:var(--meso)">Cardiogenic area<div class="tip">Mesoderm passes <b>cranial</b> to the prechordal plate and meets across the midline → future <b>heart</b>.</div></li>
+      <li class="hot" style="--dot:var(--endo)">Cloacal membrane<div class="tip">Caudal to the primitive streak ectoderm and endoderm stay in contact. It later breaks down → <b>anal opening</b>.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="discmap"></div>
+  <footer class="cite">Lecture: Third Week of Development, slides 10–11 · Langman 15e, Ch. 5</footer>
+</section>
+
+<section class="slide stack" data-ch="3" data-title="Fate of the primitive streak" data-src="w3:12,22">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Fate of the primitive streak</div>
+    <h2>Gone by week 4</h2>
+    <p class="lede">Makes mesoderm until week 4 — then shrinks and disappears.</p>
+  </div>
+  <div class="visual" data-viz="streakfate"></div>
+  <footer class="cite">Lecture: Third Week, slide 12 &amp; self-study page · Langman 15e, Ch. 5 (Figs 5.8–5.9)</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="3" data-title="Notochord formation" data-src="w3:13-14">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Notochord</div>
+    <h2>Building the axis</h2>
+    <ol class="steps">
+      <li>Notochordal process<span class="sub">Cells migrate from node → prechordal plate</span></li>
+      <li>Notochordal canal<span class="sub">Primitive pit extends in → lumen</span></li>
+      <li>Floor fuses with endoderm<span class="sub">Then degenerates · opens to yolk sac</span></li>
+      <li>Notochordal plate<span class="sub">Flat plate within the endoderm</span></li>
+      <li>Definitive notochord<span class="sub">Folds into a rod, detaches from endoderm</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="notochord"></div>
+  <footer class="cite">Lecture: Third Week of Development, slides 13–14 · Langman 15e, Ch. 5 · transverse sections</footer>
+</section>
+
+<section class="slide split" data-ch="3" data-title="Fate & functions of notochord" data-src="w3:15-16">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Notochord</div>
+    <h2>Its legacy</h2>
+    <p class="lede">Degenerates as vertebrae form — persists as the <b class="c-noto">nucleus pulposus</b></p>
+    <ul class="points compact" data-step="2">
+      <li class="hot">Defines the body axis<div class="tip" data-t="5 functions"><ul><li>Defines the primordial axis</li><li>Gives rigidity to the embryo</li><li>Basis of the axial skeleton</li><li>Indicates the future vertebral column</li><li><b>Primary inductor</b> of the neural tube</li></ul></div></li>
+      <li>Basis of axial skeleton</li>
+      <li>Induces the neural tube</li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="spine3d"></div>
+  <footer class="cite">Lecture: Third Week of Development, slides 15–16 · Langman 15e, Ch. 5</footer>
+</section>
+
+<section class="slide stack" data-ch="3" data-title="Germ-layer derivatives" data-src="w3:17-19|emb:8-10">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Derivatives</div>
+    <h2>Three layers, one origin</h2>
+  </div>
+  <div class="visual" data-viz="germ"></div>
+  <footer class="cite">Lecture: Third Week, slides 17–19; Embryonic Period, slides 8–10 · Langman 15e, Ch. 6 · hover any item</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="3" data-title="Neurulation" data-src="w3:20">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Neural tube</div>
+    <h2>Neurulation</h2>
+    <ul class="points compact">
+      <li class="hot">Notochord induces it<div class="tip">Surface ectoderm over the notochord thickens into the <b>neural plate</b> (future brain &amp; spinal cord).</div></li>
+      <li>Plate → groove → folds → tube</li>
+      <li class="hot">Zips both ways<div class="tip">Fusion of the neural folds proceeds in <b>cranial</b> and <b>caudal</b> directions.</div></li>
+      <li class="hot" style="--dot:var(--ecto)">Cranial neuropore · day 25<div class="tip">Failure of closure cranially → <b>anencephaly</b> (Langman 15e, Ch. 6).</div></li>
+      <li class="hot" style="--dot:var(--crest)">Caudal neuropore · day 28<div class="tip">Failure of closure caudally → <b>spina bifida</b> (Langman 15e, Ch. 6).</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="neural3d" data-opts='{"mode":"neurulation"}'></div>
+  <footer class="cite">Lecture: Third Week of Development, slide 20 · Langman 15e, Ch. 6 · drag the day slider</footer>
+</section>
+
+<section class="slide split" data-ch="3" data-title="Neural crest" data-src="w3:21">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">3</span>Neural crest</div>
+    <h2>The wanderers</h2>
+    <p class="lede">Ectoderm cells that leave the <b>edges of the neural folds</b> and migrate widely</p>
+  </div>
+  <div class="visual" data-viz="crest"></div>
+  <footer class="cite">Lecture: Third Week of Development, slide 21 · Langman 15e, Ch. 6 &amp; 17 · hover each derivative</footer>
+</section>
+
+<!-- ===================================================== 4 · EMBRYONIC PERIOD ===================================================== -->
+<section class="slide split" data-ch="4" data-title="Embryonic period" data-src="emb:6-7">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Weeks 3–8</div>
+    <h2 class="xl">Embryonic period</h2>
+    <div class="cards" style="grid-template-columns:1fr 1fr; margin-top:44px">
+      <div class="card hot" style="--cc:var(--crest)"><h3>Organo&shy;genesis</h3><p>Germ layers form organ primordia</p><div class="tip" data-t="Organogenesis">CNS (neurulation) · GIT &amp; glands · heart &amp; CVS · respiratory · genitourinary — all from the three germ layers.</div></div>
+      <div class="card hot" style="--cc:var(--amnion)"><h3>Morpho&shy;genesis</h3><p>The body takes a human shape</p><div class="tip" data-t="Why it matters">This is the <b>most sensitive period</b> for inducing birth defects (Birth Defects lecture).</div></div>
+    </div>
+  </div>
+  <div class="visual" data-viz="embryo" data-opts='{"auto":true}'></div>
+  <footer class="cite">Lecture: Embryonic Period (Dr. K. H. Afroze), slides 6–7 · Langman 15e, Ch. 6</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Intraembryonic mesoderm" data-src="emb:8-10">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Intraembryonic mesoderm</div>
+    <h2>Mesoderm in three</h2>
+    <ul class="points">
+      <li style="--dot:#ff5a6e">Paraxial</li>
+      <li style="--dot:#ff9f0a">Intermediate</li>
+      <li style="--dot:#ff6fae">Lateral plate</li>
+    </ul>
+    <p class="lede" data-step="1" style="font-size:34px">Coelom splits lateral plate → <b>body cavities</b></p>
+  </div>
+  <div class="visual" data-viz="mesoderm"></div>
+  <footer class="cite">Lecture: Embryonic Period, slides 8–10 · Langman 15e, Ch. 6 · hover each region</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Somites" data-src="emb:9,18">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Paraxial mesoderm</div>
+    <h2>Somites</h2>
+    <p class="lede">Segments form <b>cranial → caudal</b></p>
+    <div class="chips" style="margin-top:34px">
+      <span class="chip">4 occipital</span><span class="chip">8 cervical</span><span class="chip">12 thoracic</span>
+      <span class="chip">5 lumbar</span><span class="chip">5 sacral</span><span class="chip">8–10 coccygeal</span>
+    </div>
+    <ul class="points compact" style="margin-top:34px">
+      <li class="hot" style="--dot:#ff5a6e">Sclerotome → vertebrae, ribs<div class="tip">Sclerotome surrounds the neural tube &amp; notochord → <b>vertebrae</b> and <b>ribs</b>.<br><span style="font-size:22px">(Langman 15e: the sternum arises from lateral plate mesoderm.)</span></div></li>
+      <li class="hot" style="--dot:#ff9f0a">Dermomyotome → muscle, dermis<div class="tip">Myotome → <b>skeletal muscle</b>; dermatome → <b>dermis</b> (of the back, per Langman).</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="neural3d" data-opts='{"mode":"somites"}'></div>
+  <footer class="cite">Lecture: Embryonic Period, slides 9 &amp; 18 (Table 6.2) · Langman 15e, Ch. 6</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Folding of the embryo" data-src="emb:11-13">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Folding</div>
+    <h2>Folding</h2>
+    <ul class="points compact">
+      <li>Head &amp; tail folds</li>
+      <li>Two lateral folds</li>
+      <li class="hot">Heart &amp; membranes → ventral<div class="tip" data-t="Head fold">Septum transversum, heart primordium and oropharyngeal membrane move to the <b>ventral</b> surface — their order reverses.</div></li>
+      <li class="hot">Gut tube enclosed<div class="tip" data-t="Gut tube">Foregut · midgut · hindgut. The <b>midgut</b> stays connected to the yolk sac by the <b>vitelline duct</b>.</div></li>
+      <li class="hot">Tail fold effects<div class="tip">Primitive streak ends up <b>caudal</b> to the cloacal membrane; connecting stalk shifts ventrally; <b>allantois</b> partly incorporated.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="folding"></div>
+  <footer class="cite">Lecture: Embryonic Period, slides 11–13 · Langman 15e, Ch. 6 &amp; 7 · drag the folding slider</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="External appearance" data-src="emb:14-15">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Weeks 4–8</div>
+    <h2>Becoming human-like</h2>
+    <ul class="points compact">
+      <li class="hot">Pharyngeal arches · wk 4–5<div class="tip">Appear in the 4th and 5th weeks and give the embryo its characteristic external appearance.</div></li>
+      <li>Head enlarges</li>
+      <li>Face, eyes, ears, nose</li>
+      <li>Limbs develop</li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="embryo"></div>
+  <footer class="cite">Lecture: Embryonic Period, slides 14–15 · Langman 15e, Ch. 6 &amp; 17</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Limbs" data-src="emb:16">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Weeks 5–8</div>
+    <h2>Limbs</h2>
+    <ul class="points">
+      <li class="hot">Limb buds · week 5<div class="tip">Lecture: 5th week (Langman: end of week 4 – start of week 5). At CRL ≈ 9.8 mm the forelimbs are paddle-shaped.</div></li>
+      <li>Grow · 3 segments</li>
+      <li>Digital rays appear</li>
+      <li>Fingers &amp; toes · week 8</li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="limb"></div>
+  <footer class="cite">Lecture: Embryonic Period, slide 16 · Langman 15e, Ch. 6 &amp; 12</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Physiological herniation" data-src="emb:17">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Weeks 6–12</div>
+    <h2>Physiological herniation</h2>
+    <ul class="points">
+      <li>Begins week 6</li>
+      <li>Gut loops enter the cord</li>
+      <li class="hot">Back by week 12<div class="tip">Lecture: return in the 12th week (Langman: return begins in week 10, complete by the end of month 3).</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="hernia"></div>
+  <footer class="cite">Lecture: Embryonic Period, slide 17 · Langman 15e, Ch. 6 &amp; 15</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="4" data-title="Age of the embryo" data-src="emb:18-19">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">4</span>Dating the embryo</div>
+    <h2>How old is it?</h2>
+    <ul class="points">
+      <li class="hot">Somite count<div class="tip">Used in the 4th–5th weeks (≈ days 20–30) — see Table 6.2.</div></li>
+      <li class="hot">Crown–rump length<div class="tip" data-t="CRL">From the <b>vertex of the skull</b> to the midpoint between the <b>apices of the buttocks</b> (Table 6.3).</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="agechart"></div>
+  <footer class="cite">Lecture: Embryonic Period, slides 18–19 · Langman 15e, Tables 6.2 &amp; 6.3</footer>
+</section>
+
+<!-- ===================================================== 5 · FETAL PERIOD ===================================================== -->
+<section class="slide split narrow-copy" data-ch="5" data-title="Fetal period: growth" data-src="fet:8">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Month 3 → Birth</div>
+    <h2>Fetal period</h2>
+    <ul class="points">
+      <li>Organs mature</li>
+      <li class="hot" style="--dot:var(--amnion)">Length: months 3–5<div class="tip">Growth in length is particularly striking in the <b>3rd, 4th and 5th months</b>.</div></li>
+      <li class="hot" style="--dot:var(--orange)">Weight: last 2 months<div class="tip"><b>50%</b> of full-term weight is added in the last 2 months.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="growth"></div>
+  <footer class="cite">Lecture: Fetal Period (Prof. E. Elzawawy), slide 8 · Langman 15e, Table 8.1 · hover the chart</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="5" data-title="Head-to-body proportion" data-src="fet:9">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Proportions</div>
+    <h2>The head slows down</h2>
+    <ol class="steps">
+      <li>Month 3 · ½<span class="sub">Head ≈ half of the CRL</span></li>
+      <li>Month 5 · ⅓<span class="sub">Head ≈ one third of the CHL</span></li>
+      <li>Birth · ¼<span class="sub">Head ≈ one quarter of the CHL</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="proportion"></div>
+  <footer class="cite">Lecture: Fetal Period, slide 9 · Langman 15e, Ch. 8 · CRL = sitting height · CHL = crown–heel length</footer>
+</section>
+
+<section class="slide stack" data-ch="5" data-title="Month by month" data-src="fet:10-14">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Milestones</div>
+    <h2>Month by month</h2>
+  </div>
+  <div class="visual" data-viz="fetaltl"></div>
+  <footer class="cite">Lecture: Fetal Period, slides 10–14 · Langman 15e, Tables 8.1 &amp; 8.2 · drag along the timeline</footer>
+</section>
+
+<section class="slide stack" data-ch="5" data-title="At birth" data-src="fet:15">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>The newborn</div>
+    <h2>At birth</h2>
+  </div>
+  <div class="visual" data-viz="stats" data-opts='{"set":"birth"}'></div>
+  <footer class="cite">Lecture: Fetal Period, slide 15 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide stack" data-ch="5" data-title="Length of pregnancy" data-src="fet:16">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Time of birth</div>
+    <h2>How long is pregnancy?</h2>
+  </div>
+  <div class="visual" data-viz="gestation"></div>
+  <footer class="cite">Lecture: Fetal Period, slide 16 · Langman 15e, Ch. 8 · hover or drag along the bar</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="5" data-title="Amniotic fluid" data-src="fet:3-7">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Amniotic cavity</div>
+    <h2>Amniotic fluid</h2>
+    <ul class="points compact">
+      <li class="hot">Four functions<div class="tip"><ul><li>Protective cushion</li><li>Prevents adherence of embryo to amnion</li><li>Allows fetal movement</li><li>Helps dilate the cervix in labour</li></ul></div></li>
+      <li class="hot">Swallowed ≈ 400 mL/day<div class="tip">From month 5 the fetus swallows its own fluid — ~400 mL/day at term (about half). Fetal urine (mostly water) is added.</div></li>
+      <li>Replaced every 3 h</li>
+      <li class="hot">Fills the chorionic cavity<div class="tip">By the end of month 3 the expanding amniotic cavity obliterates the chorionic cavity.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="amniotic"></div>
+  <footer class="cite">Lecture: Fetal Period, slides 3–7 · Langman 15e, Ch. 8 · hover the zones</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="5" data-title="Ultrasound" data-src="fet:17">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Imaging</div>
+    <h2>Ultrasound</h2>
+    <ul class="points compact">
+      <li>Dates the pregnancy</li>
+      <li class="hot">CRL · weeks 7–14<div class="tip">Accurate crown–rump length measurement in the 7th–14th weeks.</div></li>
+      <li class="hot">BPD · AC · FL · wk 16–30<div class="tip">Biparietal diameter, abdominal circumference and femur length are used in weeks 16–30.</div></li>
+      <li>Detects birth defects</li>
+      <li class="hot">Fetal size<div class="tip">Important for managing pregnancy — especially if the mother has a <b>small pelvis</b>.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="ultrasound"></div>
+  <footer class="cite">Lecture: Fetal Period, slide 17 · Langman 15e, Ch. 8 · simulated scans</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="5" data-title="LBW vs SGA" data-src="fet:18-19">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Small babies</div>
+    <h2>Which kind of small?</h2>
+    <ul class="points compact">
+      <li class="hot" style="--dot:var(--orange)">LBW &lt; 2,500 g<div class="tip">Low birth weight — regardless of gestational age.</div></li>
+      <li class="hot" style="--dot:var(--meso)">SGA &lt; 10th percentile<div class="tip" data-t="Small for gestational age">Weight below the 10th percentile for gestational age:<br>• <b>pathologically small</b> → IUGR, or<br>• <b>constitutionally small</b> → normal.</div></li>
+    </ul>
+    <p class="lede" style="font-size:30px">Drag the baby on the chart</p>
+  </div>
+  <div class="visual" data-viz="sga"></div>
+  <footer class="cite">Lecture: Fetal Period, slide 18 · percentile curves computed from Hadlock et al., Radiology 1991 (the chart shown in the lecture)</footer>
+</section>
+
+<section class="slide stack" data-ch="5" data-title="IUGR" data-src="fet:20-25">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">5</span>Intrauterine growth restriction</div>
+    <h2>IUGR</h2>
+  </div>
+  <div class="visual" data-viz="stats" data-opts='{"set":"iugr"}'></div>
+  <footer class="cite">Lecture: Fetal Period, slides 20–25 · Langman 15e, Ch. 8 · hover each card</footer>
+</section>
+
+<!-- ===================================================== 6 · PLACENTA ===================================================== -->
+<section class="slide split narrow-copy" data-ch="6" data-title="The placenta" data-src="pla:3-6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Gross anatomy</div>
+    <h2>The placenta</h2>
+    <div class="cards" style="grid-template-columns:1fr 1fr; gap:18px; margin-top:36px">
+      <div class="stat"><span class="v" style="font-size:72px">15–25<small>cm</small></span><span class="l">Diameter · discoid</span></div>
+      <div class="stat"><span class="v" style="font-size:72px">≈3<small>cm</small></span><span class="l">Thickness</span></div>
+      <div class="stat" style="grid-column:span 2"><span class="v" style="font-size:72px">500–600<small>g</small></span><span class="l">Weight at term</span></div>
+    </div>
+  </div>
+  <div class="visual" data-viz="placenta3d"></div>
+  <footer class="cite">Lecture: Placenta (Prof. E. Elzawawy), slides 3–6 · Langman 15e, Ch. 8 · drag to rotate</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="6" data-title="Structure of the placenta" data-src="pla:7-12">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Structure</div>
+    <h2>Two parts</h2>
+    <ul class="points compact">
+      <li class="hot" style="--dot:var(--tropho)">Fetal: chorion frondosum<div class="tip">Chorionic villi opposite the decidua basalis.<br><b>Anchoring</b> villi reach through to the decidua; <b>free</b> (nourishing) villi float in the intervillous space.</div></li>
+      <li class="hot" style="--dot:var(--meso)">Maternal: decidua basalis<div class="tip">Forms the maternal part; <b>placental septa</b> project from it as incomplete walls.</div></li>
+      <li class="hot">15–20 cotyledons<div class="tip">Separated by deep grooves made by the placental septa. Intervillous spaces communicate with each other.</div></li>
+      <li class="hot">Grows by branching<div class="tip">Size ↑ by new villi; thickness ↑ by <b>arborization</b> of villi. Microvilli raise the surface area to <b>4–14 m²</b>.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="villi" data-opts='{"mode":"structure"}'></div>
+  <footer class="cite">Lecture: Placenta, slides 7–12 · Langman 15e, Ch. 8 (Fig. 8.13) · hover the structures</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="6" data-title="Placental circulation" data-src="pla:13-15">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Circulation</div>
+    <h2>Two bloods, never mixing</h2>
+    <ul class="points compact">
+      <li class="hot" style="--dot:var(--oxy)">80–100 spiral arteries<div class="tip">Eroded by villi; arterial blood (<b>higher pressure</b>) spurts into the intervillous space carrying O₂, nutrients &amp; antibodies, then drains to endometrial veins (<b>lower pressure</b>) carrying CO₂ &amp; waste.</div></li>
+      <li class="hot">≈150 mL in the spaces<div class="tip">Intervillous spaces of the mature placenta hold about 150 mL of maternal blood.</div></li>
+      <li class="hot" style="--dot:var(--oxy)">Umbilical vein → fetus<div class="tip">Carries O₂ and nutrients to the fetus.</div></li>
+      <li class="hot" style="--dot:var(--deoxy)">Umbilical arteries → placenta<div class="tip">Carry fetal CO₂ and waste back to the placenta. Exchange happens across the villus wall — the <b>placental barrier</b>.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="villi" data-opts='{"mode":"flow"}'></div>
+  <footer class="cite">Lecture: Placenta, slides 13–15 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="6" data-title="Placental barrier" data-src="pla:16-20">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Placental membrane</div>
+    <h2>The barrier thins</h2>
+    <ol class="steps">
+      <li>Early · 4 layers<span class="sub">Endothelium · connective tissue · cytotrophoblast · syncytium</span></li>
+      <li>20 weeks · 2 layers<span class="sub">Endothelium · syncytiotrophoblast</span></li>
+      <li>Term · 3 layers<span class="sub">Endothelium · fibrinoid · syncytiotrophoblast</span></li>
+    </ol>
+  </div>
+  <div class="visual" data-viz="barrier"></div>
+  <footer class="cite">Lecture: Placenta, slides 16–20 · Langman 15e, Fig. 8.8 · selective permeability</footer>
+</section>
+
+<section class="slide stack" data-ch="6" data-title="Functions of the placenta" data-src="pla:21-23">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Functions</div>
+    <h2>Five jobs</h2>
+  </div>
+  <div class="visual" data-viz="hormones"></div>
+  <footer class="cite">Lecture: Placenta, slides 21–23 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide stack" data-ch="6" data-title="Placental anomalies" data-src="pla:24-35">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Congenital anomalies</div>
+    <h2>Placental anomalies</h2>
+  </div>
+  <div class="visual" data-viz="anomalies"></div>
+  <footer class="cite">Lecture: Placenta, slides 24–35 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide split" data-ch="6" data-title="Preeclampsia" data-src="pla:36">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Clinical</div>
+    <h2>Preeclampsia</h2>
+    <ul class="points">
+      <li class="hot">Maternal hypertension<div class="tip">Can progress to <b>eclampsia</b> — seizures.</div></li>
+      <li class="hot">IUGR · fetal or maternal death<div class="tip">Serious outcomes for both mother and fetus.</div></li>
+      <li class="hot" style="--dot:var(--green)">Cured by delivery<div class="tip">Completely reversible by delivery of the baby.</div></li>
+      <li class="hot">Risk factors<div class="tip"><ul><li>Preeclampsia in a previous pregnancy</li><li>First pregnancy</li><li>Obesity</li><li>Family history</li><li>Multiple gestation</li><li>Hypertension · diabetes</li></ul></div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="stats" data-opts='{"set":"preeclampsia"}'></div>
+  <footer class="cite">Lecture: Placenta, slide 36 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="6" data-title="Umbilical cord" data-src="pla:37-41">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">6</span>Umbilical cord</div>
+    <h2>The lifeline</h2>
+    <ul class="points compact">
+      <li class="hot">30–80 cm · 2 cm wide<div class="tip">Average length <b>50 cm</b>. Spirally twisted (false knots) and covered by amnion.</div></li>
+      <li class="hot">2 arteries + 1 vein<div class="tip" data-t="Contents at birth"><ul><li>Wharton’s jelly</li><li>2 umbilical arteries</li><li>1 umbilical vein</li><li>Allantois (urachus)</li><li>Remains of the vitelline duct</li></ul></div></li>
+      <li class="hot">Long or short cord<div class="tip">Long cord → <b>true knots</b>, loop around the neck.<br>Short cord → <b>abruptio placentae</b>.</div></li>
+      <li class="hot" style="--dot:var(--orange)">Single artery: 1 in 200<div class="tip">~<b>20%</b> of these babies have cardiac, renal or other vascular defects.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="cord3d"></div>
+  <footer class="cite">Lecture: Placenta, slides 37–41 · Langman 15e, Ch. 8</footer>
+</section>
+
+<!-- ===================================================== 7 · TWINNING ===================================================== -->
+<section class="slide split narrow-copy" data-ch="7" data-title="Dizygotic vs monozygotic" data-src="tw:3-6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">7</span>Twinning</div>
+    <h2>Two from one pregnancy</h2>
+    <ul class="points compact">
+      <li class="hot" style="--dot:var(--orange)">Dizygotic: 2 ova + 2 sperm<div class="tip" data-t="Dizygotic (fraternal)">Like ordinary siblings — sex may differ. Each has its own chorion &amp; amnion → <b>DCDA</b>; placentas separate or fused.<br>Influenced by maternal age, parity, family history, assisted reproduction.</div></li>
+      <li class="hot" style="--dot:var(--amnion)">Monozygotic: 1 zygote splits<div class="tip" data-t="Monozygotic (identical)">Genetically identical, same sex. Membranes depend on <b>when</b> the embryo divides.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="twinorigin"></div>
+  <footer class="cite">Lecture: Twinning (Prof. E. Elzawawy), slides 3–6 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide stack" data-ch="7" data-title="Monozygotic timing" data-src="tw:7-11">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">7</span>Monozygotic twins</div>
+    <h2>Timing decides the membranes</h2>
+  </div>
+  <div class="visual" data-viz="twins"></div>
+  <footer class="cite">Lecture: Twinning, slides 7–11 · Langman 15e, Fig. 8.19 · drag the day slider</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="7" data-title="Why chorion matters" data-src="tw:12-13">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">7</span>Monochorionic twins</div>
+    <h2>Why chorion matters</h2>
+    <ul class="points compact">
+      <li class="hot">One placenta, linked vessels<div class="tip">Monochorionic twins share one placenta → vascular anastomoses between the two circulations.</div></li>
+      <li class="hot">Feto-fetal transfusion<div class="tip" data-t="FFTS"><b>Donor</b> → oligohydramnios, IUGR<br><b>Recipient</b> → polyhydramnios, polycythemia, heart failure, hydrops<br>Chorionicity is judged most reliably by <b>early</b> ultrasound.</div></li>
+      <li class="hot">TAPS<div class="tip">Twin anemia–polycythemia sequence: chronic, unequal red-cell transfer.</div></li>
+      <li class="hot">MCMA → cord entanglement<div class="tip">Both fetuses share one amniotic cavity.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="ffts"></div>
+  <footer class="cite">Lecture: Twinning, slides 12–13 · Fetal Period, slide 19</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="7" data-title="Conjoined twins" data-src="tw:14">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">7</span>After day 13</div>
+    <h2>Conjoined twins</h2>
+    <ul class="points compact">
+      <li>Incomplete separation of the disc</li>
+      <li>Named by the site of union</li>
+      <li class="hot">Shared organs<div class="tip">Heart, liver, GIT or nervous system. Prenatal <b>ultrasound</b> and <b>fetal MRI</b> define the shared anatomy.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="conjoined"></div>
+  <footer class="cite">Lecture: Twinning, slide 14 · Langman 15e, Ch. 8</footer>
+</section>
+
+<section class="slide stack" data-ch="7" data-title="High-yield comparison" data-src="tw:15-16">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">7</span>Summary</div>
+    <h2>High-yield comparison</h2>
+  </div>
+  <div class="visual" data-viz="stats" data-opts='{"set":"twintable"}'></div>
+  <footer class="cite">Lecture: Twinning, slides 15–16 · Remember: monozygotic does not automatically mean monochorionic</footer>
+</section>
+
+<!-- ===================================================== 8 · BIRTH DEFECTS ===================================================== -->
+<section class="slide stack" data-ch="8" data-title="Birth defects: scale" data-src="bd:3,5-6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Birth defects</div>
+    <h2>Birth defects</h2>
+    <div class="lede hot plus" style="display:inline-block">= congenital malformation = congenital anomaly<div class="tip" data-t="Terminology">Structural, behavioural, functional and metabolic disorders <b>present at birth</b>.<br>Studied by <b>teratology</b> (Gr. <i>teratos</i>, monster) or dysmorphology — usually within clinical genetics.</div></div>
+  </div>
+  <div class="visual" data-viz="stats" data-opts='{"set":"defects"}'></div>
+  <footer class="cite">Lecture: Birth Defects (Prof. E. Elzawawy), slides 3, 5–6 · Langman 15e, Ch. 9</footer>
+</section>
+
+<section class="slide split" data-ch="8" data-title="Causes of birth defects" data-src="bd:4">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Causes</div>
+    <h2>Why they happen</h2>
+    <ul class="points">
+      <li style="--dot:#ff5a6e">Gene–environment interaction</li>
+      <li style="--dot:#64d2ff">Genetic</li>
+      <li style="--dot:#ffcc33">Environmental</li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="donut"></div>
+  <footer class="cite">Lecture: Birth Defects, slide 4 · Langman 15e, Ch. 9</footer>
+</section>
+
+<section class="slide split" data-ch="8" data-title="Minor anomalies" data-src="bd:6">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Minor anomalies</div>
+    <h2>Small clues, big signals</h2>
+    <ul class="points">
+      <li>Seen in ~15% of newborns</li>
+      <li class="hot">More minors → higher risk<div class="tip">Minor anomalies (e.g. <b>microtia</b>, small ears) are indicators of possible <b>major</b> malformations.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="minor"></div>
+  <footer class="cite">Lecture: Birth Defects, slide 6 · Langman 15e, Ch. 9</footer>
+</section>
+
+<section class="slide stack" data-ch="8" data-title="Types of abnormal development" data-src="bd:7-11">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Terminology</div>
+    <h2>Four ways development fails</h2>
+  </div>
+  <div class="visual" data-viz="dysmorph"></div>
+  <footer class="cite">Lecture: Birth Defects, slides 7–11 · Langman 15e, Ch. 9 · hover each line</footer>
+</section>
+
+<section class="slide stack" data-ch="8" data-title="Syndrome · association · sequence" data-src="bd:12-14">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Patterns</div>
+    <h2>Syndrome · Association · Sequence</h2>
+  </div>
+  <div class="visual" data-viz="patterns"></div>
+  <footer class="cite">Lecture: Birth Defects, slides 12–14 · Langman 15e, Ch. 9</footer>
+</section>
+
+<section class="slide split narrow-copy" data-ch="8" data-title="Genetic causes" data-src="bd:15-21">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Genetic factors</div>
+    <h2>Written in the genes</h2>
+    <ul class="points compact">
+      <li class="hot" style="--dot:#ff6fae">Chromosomal<div class="tip">Common syndromes: <b>Down</b>, <b>Edwards</b> (trisomy 18 — 2nd most common trisomy, ~80% female, most die before birth).<br>Microdeletions: <b>DiGeorge</b> (22q11), <b>cri-du-chat</b> (5p), <b>Prader-Willi</b>, <b>Angelman</b>.</div></li>
+      <li class="hot" style="--dot:#64d2ff">Single-gene<div class="tip"><b>Isolated</b>: hydrocephalus, microcephaly, aniridia, cataract, polydactyly.<br><b>Syndromes</b>: Apert (FGFR2), ectrodactyly–ectodermal dysplasia, Roberts, Van der Woude (IRF6).</div></li>
+      <li class="hot" style="--dot:#ff9f0a">Gene over-expression<div class="tip"><b>Dicephalus</b> — over-expression of <b>GOOSECOID</b>.</div></li>
+      <li class="hot" style="--dot:#34d399">Multifactorial<div class="tip">The <b>majority</b> of genetic malformations; many loci (polygenic), e.g. type 1 diabetes.</div></li>
+      <li class="hot" style="--dot:#c084fc">Genetic heterogeneity<div class="tip">One malformation, many causes (chromosomal, syndromic or isolated): holoprosencephaly, cleft lip/palate, NTDs.</div></li>
+    </ul>
+  </div>
+  <div class="visual" data-viz="dna3d"></div>
+  <footer class="cite">Lecture: Birth Defects, slides 15–21 · Langman 15e, Ch. 2 &amp; 9</footer>
+</section>
+
+<section class="slide stack" data-ch="8" data-title="Principles of teratology" data-src="bd:22-27">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Environmental factors</div>
+    <h2>Principles of teratology</h2>
+  </div>
+  <div class="visual" data-viz="teratology"></div>
+  <footer class="cite">Lecture: Birth Defects, slides 22–27 · Langman 15e, Ch. 9</footer>
+</section>
+
+<section class="slide stack" data-ch="8" data-title="Teratogen explorer" data-src="bd:28-40">
+  <div class="copy">
+    <div class="eyebrow"><span class="num">8</span>Teratogens</div>
+    <h2>What harms the embryo</h2>
+  </div>
+  <div class="visual" data-viz="teratogens"></div>
+  <footer class="cite">Lecture: Birth Defects, slides 28–40 · Langman 15e, Ch. 9 · choose an agent</footer>
+</section>
+
+<!-- ===================================================== 9 · REVIEW ===================================================== -->
+<section class="slide stack" data-ch="9" data-title="The whole journey">
+  <div class="copy">
+    <div class="eyebrow">Review</div>
+    <h2>The whole journey</h2>
+  </div>
+  <div class="visual" data-viz="timeline" data-opts='{"recap":true}'></div>
+  <footer class="cite">Langman’s Medical Embryology 15e, Ch. 3–9</footer>
+</section>
+
+<section class="slide center" data-ch="9" data-title="Test yourself">
+  <div class="eyebrow" style="justify-content:center">Question bank</div>
+  <h1 style="font-size:150px">Test <span class="grad">yourself.</span></h1>
+  <p class="lede" style="max-width:1100px">Single-best-answer MCQs on every lecture — with explanations and sources.</p>
+  <div class="row-flex" style="margin-top:56px">
+    <a class="btn" href="quiz.html" target="_blank" style="text-decoration:none; font-size:32px; padding:24px 48px">Start the quiz</a>
+  </div>
+  <footer class="cite" style="justify-content:center; right:120px">Press Q at any time to open the question bank</footer>
+</section>
+
+<section class="slide stack" data-ch="9" data-title="References">
+  <div class="copy">
+    <div class="eyebrow">Sources</div>
+    <h2>References</h2>
+  </div>
+  <div class="visual" style="margin-top:44px">
+    <div class="cards" style="grid-template-columns:1.25fr 1fr; gap:30px; height:100%">
+      <div class="card" style="--cc:var(--accent)">
+        <h3>Textbook</h3>
+        <p style="font-size:30px; color:var(--fg)">Sadler TW. <i>Langman’s Medical Embryology</i>, 15th ed. Wolters Kluwer; 2024.</p>
+        <p style="font-size:26px">Ch. 3 First week · Ch. 4 Second week · Ch. 5 Third week · Ch. 6 Embryonic period (Tables 6.2, 6.3) · Ch. 8 Fetus &amp; placenta (Tables 8.1, 8.2) · Ch. 9 Birth defects</p>
+        <p style="font-size:26px; margin-top:26px">Hadlock FP, Harrist RB, Martinez-Poyer J. In utero analysis of fetal growth: a sonographic weight standard. <i>Radiology</i> 1991;181:129–133.</p>
+      </div>
+      <div class="card" style="--cc:var(--tropho)">
+        <h3>Lectures · COMHS, NUST Oman</h3>
+        <p style="font-size:26px; line-height:1.5"><b style="color:var(--fg)">Dr. Khizer Hussain Afroze M.</b> — Fertilization &amp; First Week · Implantation &amp; Second Week · Third Week · Embryonic Period<br><b style="color:var(--fg)">Prof. Dr. Ehab Elzawawy</b> — Fetal Period · Placenta · Twinning · Birth Defects</p>
+        <p style="font-size:22px; margin-top:22px">Original slides: use the “Lecture slides ↗” button on any slide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
